@@ -1,3 +1,4 @@
+ts=.1;
 y0=0;
 x0=0;
 t=0:.1:8.4;
@@ -15,11 +16,12 @@ radio=(3*volumen/(4*pi))^(1/3)
 area=pi*radio^2
 b=0.5*densidadDelAire*coeficienteDeArrastre*area
 
+%s prima de x en al primera posicion o derivada de posicion
 spta=-abs(vix)/vix*b/masa*vix^2
-%vx=
-%xa=x0 
+%xn-1
+xa=x0-vix*ts-(spta*ts^2)
 
-ts=.1;
+
 %ciclocos = -pi:pi/100:pi;
 %volcan= y0*cos(ciclocos);
 %plot(ciclocos,volcan)
