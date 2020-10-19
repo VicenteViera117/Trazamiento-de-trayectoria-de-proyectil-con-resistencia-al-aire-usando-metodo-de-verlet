@@ -29,12 +29,15 @@ posicionesEnX=[xa,0]
 %x=[xa,x0]
 %i = 3:1:90;
 %--------------------intento 2
-%x=zeros(0,90)
-%x(1)=xa
-%x(2)=x0
-%for
-x(end+1)=(2*x(i-1)-x(i-2))-(((x(i-1)-x(i-2)/ts).^2)*(b/masa)*ts.^2);
-
+x=zeros(1,90)
+x(1)=xa
+x(2)=x0
+for i=3:90
+    x(i)=(2*x(i-1)-x(i-2))-(((x(i-1)-x(i-2)/ts).^2)*(b/masa)*ts.^2);
+    x(i)
+    plot(i,x)
+    hold on
+end
 
 
 
