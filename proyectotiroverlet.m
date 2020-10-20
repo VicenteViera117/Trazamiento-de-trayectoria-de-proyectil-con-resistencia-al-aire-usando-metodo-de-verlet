@@ -37,7 +37,8 @@ end
 
 
 
-
+% TODO (Javier): crear ecuación que se va a graficar
+% grafica dinámica de la función
 
 
 
