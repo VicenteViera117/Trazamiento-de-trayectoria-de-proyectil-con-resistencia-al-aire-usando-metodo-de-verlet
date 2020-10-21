@@ -38,7 +38,7 @@ end
 
 %---------------operaciones para determinar valores de y-------------------
 
-sptay =  -g - abs(viy)/viy* b/masa * viy^2
+sptay =  ((g - abs(viy))/viy )* (b/masa * viy^2);
 ya = y0 - viy .* ts - sptay .* ts.^2;
 
 % calculamos y añadimos los valores de y
