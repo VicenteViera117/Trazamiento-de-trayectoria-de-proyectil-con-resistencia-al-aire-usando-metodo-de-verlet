@@ -51,10 +51,8 @@ for i=3:90
     y1(i,1) = y(i);
 end
 
-% figure('Name','Velvet')
-% plot(x,y,'ro-')
 
-% figure('Name','Velvet')
+% figure('Name','Volcán')
 % ciclocos = -pi:pi/100:pi;
 % volcan= 2.*cos(ciclocos);
 % plot(ciclocos,volcan)
