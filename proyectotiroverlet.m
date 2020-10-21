@@ -42,17 +42,8 @@ function tirovolcan()
     radio=(3*volumen/(4*pi))^(1/3);
     area=pi*radio^2;
     b=0.5*densidadDelAire*coeficienteDeArrastre*area;
-    %-----------------graficamos el volcan-------------------------------------
-    figure('Name','Volcán')
-    ciclocos = -pi*20:pi/100:pi*20;
-    volcan= y0.*cos(ciclocos/20);
-    plot(ciclocos,volcan,'k-'),xlabel('Distancia'),...
-    ylabel('Altura'),title('Simulación de una piedra expulsada de un volcán'),...
-     %-----------------leyenda-------------------------------------
-
-
-    grid on
-    hold on
+    
+     
 
     %---------------operaciones para determinar valores de x-------------------
 
@@ -71,12 +62,7 @@ function tirovolcan()
     for i=3:1000
         x(i)=(2.*x(i-1)-x(i-2))-(((x(i-1)-x(i-2))./ts).^2)*(b/masa).*ts^2;
         vx(i-1)=(x(i)-x(i-1))/ts;
-        delete(findall(gcf,'type','text'))
-        text(0,10,['x = ' num2str(x)]); % Coordenada actual en X
-        text(0,5,'Valores') % Titulo
-        text(0,0,['Altura inicial = ' num2str(y0)]) % Texto de la altura inicial
-        text(0,-5,['Angulo = ' num2str(ang)]) % Texto del angulo de disparo
-        text(0,-10,['Velocidad inicial = ' num2str(vi)]) % Texto de la velocidad inicial
+       
     end
 
     x(1)=x0;
@@ -97,7 +83,7 @@ function tirovolcan()
     for i=3:1000
             y(i)=(2.*y(i-1)-y(i-2))-(((y(i-1)-y(i-2))./ts).^2)*(b/masa)*(ts^2)-(g*ts^2);
             vy(i-1)=(y(i)-y(i-1))/ts;
-            text(0,15,['y = ' num2str(y)]); % Coordenada actual en Y
+           
     end
 
     y(1)=y0;
@@ -108,6 +94,24 @@ function tirovolcan()
     [Altura_En_La_Que_Impacta_Con_El_Suelo, indiceyv2] = min(yv2);
     DistanicaRecorrida = x(indiceyv2)
     Tiempo_Para_Impactar = (indiceyv2 * ts) - 1
+    
+    %-----------------graficamos el volcan-------------------------------------
+    figure('Name','Volcán')
+    ciclocos = -pi*20:pi/100:pi*20;
+    volcan= y0.*cos(ciclocos/20);
+    plot(ciclocos,volcan,'k-'),xlabel('Distancia'),...
+    ylabel('Altura'),title('Simulación de una piedra expulsada de un volcán'),...
+    hold on
+    %-----------------leyenda-------------------------------------
+    delete(findall(gcf,'type','text'))
+    text(0,10,['x = ' num2str(x)]); % Coordenada actual en X
+    text(0,5,'Valores') % Titulo
+    text(0,0,['Altura inicial = ' num2str(y0)]) % Texto de la altura inicial
+    text(0,-5,['Angulo = ' num2str(ang)]) % Texto del angulo de disparo
+    text(0,-10,['Velocidad inicial = ' num2str(vi)]) % Texto de la velocidad inicial
+    text(0,15,['y = ' num2str(y)]); % Coordenada actual en Y
+
     comet(x,y)
+    grid on
     hold on
 end
