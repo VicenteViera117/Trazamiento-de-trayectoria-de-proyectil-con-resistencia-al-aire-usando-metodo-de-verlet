@@ -38,17 +38,16 @@ end
 
 %---------------operaciones para determinar valores de y-------------------
 
-sptay =  -g - abs(viy)/viy* b/masa * viy^2
+sptay =  -g - abs(viy)/viy* b/masa * viy^2;
 ya = y0 - viy .* ts - sptay .* ts.^2;
 
 % calculamos y añadimos los valores de y
-y=zeros(1,90);
-y(1)=ya;
-y(2)=y0;
-%for i=3:90
-    %y(i)=(2.*y(i-1)-y(i-2))-(((y(i-1)-y(i-2))/ts)^2).*(angr/masa).*ts^2-g.*ts.^2;
-    %y1(i,1) = y(i);
-%end
+% y=zeros(1,90);
+% y(1)=ya;
+% y(2)=y0;
+% for i=3:90
+%     y(i)=(2.*y(i-1)-y(i-2))-(((y(i-1)-y(i-2))/ts)^2).*(angr/masa).*ts^2-g.*ts.^2;
+% end
 
 % for i=3:90
 %     y(i)=(2.*y(i-1)-y(i-2))-(((y(i-1)-y(i-2))./ts).^2)*(b/masa).*-(ts^2*g);
