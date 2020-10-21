@@ -1,6 +1,8 @@
 clear all
+clc
 %-------------------parametros iniciales-----------------
 ts=.1;
+g = 9.81;
 y0=0;
 x0=0;
 t=0:.1:8.4;
@@ -31,22 +33,31 @@ x=zeros(1,90);
 x(1)=xa;
 x(2)=x0;
 for i=3:90
-    x(i)=(2*x(i-1)-x(i-2))-(((x(i-1)-x(i-2))/ts).^2)*(b/masa)*ts^2;
-    x(i)
+    x(i)=(2.*x(i-1)-x(i-2))-(((x(i-1)-x(i-2))./ts).^2)*(b/masa).*ts^2;
+    x1(i,1) = x(i);
 end
 
+%---------------operaciones para determinar valores de y-------------------
 
+sptay =  g.* abs(viy)/viy .* b/masa .* viy.^2;
+ya = y0 - viy .* ts - sptay .* ts.^2;
 
-% TODO (Javier): crear ecuación que se va a graficar
-% grafica dinámica de la función
+%calculamos y añadimos los valores de y
+y=zeros(1,90);
+y(1)=ya;
+y(2)=y0;
+for i=3:90
+    y(i)=(2.*y(i-1)-y(i-2))-(((y(i-1)-y(i-2))/ts)^2).*(angr/masa).*ts^2-g.*ts.^2;
+    y1(i,1) = y(i);
+end
 
+% figure('Name','Velvet')
+% plot(x,y,'ro-')
 
-
-
-
-%ciclocos = -pi:pi/100:pi;
-%volcan= y0*cos(ciclocos);
-%plot(ciclocos,volcan)
+% figure('Name','Velvet')
+% ciclocos = -pi:pi/100:pi;
+% volcan= 2.*cos(ciclocos);
+% plot(ciclocos,volcan)
 
 %xna=x0-ts
 

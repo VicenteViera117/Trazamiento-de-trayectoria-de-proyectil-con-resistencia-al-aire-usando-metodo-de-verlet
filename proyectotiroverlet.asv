@@ -1,4 +1,5 @@
 clear all
+clc
 %-------------------parametros iniciales-----------------
 ts=.1;
 y0=0;
@@ -22,30 +23,43 @@ b=0.5*densidadDelAire*coeficienteDeArrastre*area;
 %---------------operaciones para determinar valores de x-------------------
 
 %s prima de x en al primera posicion
-spta=-abs(vix)/vix*b/masa*vix^2
+spta=-abs(vix)/vix*b/masa*vix^2;
 %posicion xn-1
-xa=x0-vix*ts-(spta*ts^2)
+xa=x0-vix*ts-(spta*ts^2);
 
-%--------------------intento 2
-x=zeros(1,90)
-x(1)=xa
-x(2)=x0
+%calculamos y añadimos los valores de x al arreglo de valores en x
+x=zeros(1,90);
+x(1)=xa;
+x(2)=x0;
 for i=3:90
-    x(i)=(2*x(i-1)-x(i-2))-(((x(i-1)-x(i-2))/ts).^2)*(b/masa)*ts^2
-    x(i)
+    x(i)=(2.*x(i-1)-x(i-2))-(((x(i-1)-x(i-2))./ts).^2)*(b/masa).*ts^2;
+    x1(i,1) = x(i);
 end
 
+%calculamos y añadimos los valores de x al arreglo de valores en x
+y=zeros(1,90);
+(1)=xa;
+x(2)=x0;
+for i=3:90
+    x(i)=(2.*x(i-1)-x(i-2))-(((x(i-1)-x(i-2))./ts).^2)*(b/masa).*ts^2;
+    x1(i,1) = x(i);
+end
+
+% figure('Name','Velvet')
+% plot(x,y,'ro-')
+% 
+
+
+% TODO (Javier): crear ecuación que se va a graficar
+% grafica dinámica de la función
 
 
 
 
-
-
-
-
-%ciclocos = -pi:pi/100:pi;
-%volcan= y0*cos(ciclocos);
-%plot(ciclocos,volcan)
+figure('Name','Velvet')
+ciclocos = -pi:pi/100:pi;
+volcan= 2.*cos(ciclocos);
+plot(ciclocos,volcan)
 
 %xna=x0-ts
 
